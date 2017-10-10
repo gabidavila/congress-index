@@ -11,9 +11,6 @@ class MembersContainer extends React.Component {
         <Grid item xs={12} sm={6} md={9} className="grid-item middle-container">
           <Paper elevation={1}>Middle</Paper>
         </Grid>
-        <Grid item xs={12} className="grid-item foot-bar">
-          <Paper elevation={1}>Bottom</Paper>
-        </Grid>
       </Grid>
     );
   }

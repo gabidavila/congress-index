@@ -1,5 +1,5 @@
 {
-  "name": "congress-index",
+  "name": "congress-browser",
   "author": "Gabriela D'Avila Ferrara <me@gabriela.io>",
   "license": "MIT",
   "version": "0.1.0",
@@ -9,7 +9,7 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",
-    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.14",
     "redux": "^3.7.2",
     "typeface-roboto": "^0.0.35"
