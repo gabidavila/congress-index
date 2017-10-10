@@ -4,12 +4,12 @@ const BASE_API_URL = process.env.REACT_APP_BASE_API_URL;
 
 const buildFilter = (filterObj) => {
   const party = filterObj.party || 'A';
-  let options = { party, name: filterObj.name }
+  let options = { party, name: filterObj.name };
 
   if (filterObj.selectedState !== 'A') {
     options.state = filterObj.selectedState;
   } else {
-    options.state = null
+    options.state = null;
   }
 
   return queryString.stringify(options);

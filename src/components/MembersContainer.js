@@ -2,11 +2,11 @@ import React from 'react';
 import { Grid, Paper } from 'material-ui';
 import { connect } from 'react-redux';
 import * as MemberActions from '../actions/membersActions';
-import { bindActionCreators } from 'redux'
+import { bindActionCreators } from 'redux';
 
 class MembersContainer extends React.Component {
   componentDidMount() {
-    this.props.fetchMembers({})
+    this.props.fetchMembers({});
   }
 
   render() {
@@ -30,7 +30,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(MemberActions, dispatch)
+  return bindActionCreators(MemberActions, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MembersContainer);

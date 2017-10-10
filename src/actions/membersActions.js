@@ -6,6 +6,6 @@ export const fetchMembers = (filterObj) => {
     getAllMembers(filterObj)
       .then((members) => {
         dispatch({ type: 'LOADED_MEMBERS', payload: { members: members } });
-      })
-  }
+      });
+  };
 };
