@@ -3,7 +3,6 @@ import { Grid, Paper } from 'material-ui';
 import TopMenuBar from './components/interface/TopMenuBar';
 
 const MainContainer = (props) => {
-  console.log(props)
   return (
     <Grid container spacing={24}>
       <Grid item xs={12}>

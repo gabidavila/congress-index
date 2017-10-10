@@ -1,7 +1,14 @@
 import React from 'react';
 import { Grid, Paper } from 'material-ui';
+import { connect } from 'react-redux';
+import * as MemberActions from '../actions/membersActions';
+import { bindActionCreators } from 'redux'
 
 class MembersContainer extends React.Component {
+  componentDidMount() {
+    this.props.fetchMembers({})
+  }
+
   render() {
     return (
       <Grid container className="grid-container members-container" spacing={24}>
@@ -16,4 +23,14 @@ class MembersContainer extends React.Component {
   }
 }
 
-export default MembersContainer;
+function mapStateToProps(state) {
+  return {
+    members: state.members.membersList
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(MemberActions, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MembersContainer);
