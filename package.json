@@ -11,7 +11,8 @@
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
     "react-scripts": "1.0.14",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "typeface-roboto": "^0.0.35"
   },
   "scripts": {
     "start": "react-scripts start",
