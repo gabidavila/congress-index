@@ -1,17 +1,20 @@
 import React from 'react';
-import { AppBar, Toolbar, Typography } from 'material-ui';
-import { yellow } from 'material-ui/colors';
+import { Container, Image, Menu } from 'semantic-ui-react';
 
 const TopMenuBar = () => {
   return (
-    <AppBar elevation={1} position="static" style={{ backgroundColor: yellow[700] }} className="top-menu">
-      <Toolbar>
-        <img src="/images/logo.png" alt="Congress Browser"/>
-        <Typography type="title" color="inherit">
-          Congress Browser
-        </Typography>
-      </Toolbar>
-    </AppBar>
+    <Menu fixed='top' color='yellow' inverted borderless>
+      <Container>
+        <Menu.Item as='a' header>
+          <Image
+            src='/images/logo.png'
+            style={{ marginRight: '1.5em' }}
+          />
+          <span style={{fontSize: '18px', fontFamily:'Roboto Light'}}>Congress Browser</span>
+        </Menu.Item>
+        <Menu.Item as='a'>Home</Menu.Item>
+      </Container>
+    </Menu>
   );
 };
 

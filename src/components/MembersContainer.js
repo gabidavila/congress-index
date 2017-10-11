@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as MemberActions from '../actions/membersActions';
 import { bindActionCreators } from 'redux';
-import StatesSelect from './interface/StatesSelect';
+import MembersFilter from './members/Filter';
 import { Grid, Segment } from 'semantic-ui-react';
 
 class MembersContainer extends React.Component {
@@ -14,7 +14,7 @@ class MembersContainer extends React.Component {
     return (
       <Grid stackable columns={2}>
         <Grid.Column width={4}>
-          <Segment><StatesSelect/></Segment>
+          <Segment><MembersFilter/></Segment>
         </Grid.Column>
         <Grid.Column width={12}>
           <Segment>Middle</Segment>
