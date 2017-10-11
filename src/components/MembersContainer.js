@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import * as MemberActions from '../actions/membersActions';
 import { bindActionCreators } from 'redux';
 import MembersFilter from './members/Filter';
-import { Grid, Segment } from 'semantic-ui-react';
+import { Grid, Segment, Loader } from 'semantic-ui-react';
 import MembersList from './members/List';
 
 class MembersContainer extends React.Component {
@@ -18,7 +18,7 @@ class MembersContainer extends React.Component {
           <Segment><MembersFilter/></Segment>
         </Grid.Column>
         <Grid.Column width={12}>
-          <MembersList members={this.props.members} />
+          {this.props.loading ? <Loader active inline='centered' /> : <MembersList members={this.props.members} />}
         </Grid.Column>
       </Grid>
     );
@@ -27,7 +27,8 @@ class MembersContainer extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    members: state.members.membersList
+    members: state.members.membersList,
+    loading: state.members.isLoading
   };
 }
 

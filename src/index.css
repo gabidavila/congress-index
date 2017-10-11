@@ -19,3 +19,7 @@ body {
 .members .congress_type {
   text-transform: capitalize;
 }
+.member .content {
+  padding-left: 10px;
+  display: block;
+}

@@ -5,7 +5,7 @@ import MemberCard from './Card';
 const MemberList = ({members}) => {
   const listMembers = members.map((member) => <MemberCard key={member.pp_member_id} data={member}/>);
   return (
-    <Card.Group className="members" itemsPerRow={4}>
+    <Card.Group stackable className="members" itemsPerRow={4}>
       {listMembers}
     </Card.Group>
   );
