@@ -10,6 +10,9 @@ body {
 .foot-bar div {
   margin-top: 20px;
 }
-.grid-container .grid-item div, .foot-bar div {
+.padding, .foot-bar div {
   padding: 10px;
+}
+.fullwidth-select {
+  width: 100%;
 }
