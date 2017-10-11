@@ -23,3 +23,6 @@ body {
   padding-left: 10px;
   display: block;
 }
+label {
+  font-weight: bolder;
+}
