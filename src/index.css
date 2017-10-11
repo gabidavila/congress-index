@@ -16,3 +16,6 @@ body {
 .fullwidth-select {
   width: 100%;
 }
+.members .congress_type {
+  text-transform: capitalize;
+}

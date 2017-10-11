@@ -4,6 +4,7 @@ import * as MemberActions from '../actions/membersActions';
 import { bindActionCreators } from 'redux';
 import MembersFilter from './members/Filter';
 import { Grid, Segment } from 'semantic-ui-react';
+import MembersList from './members/List';
 
 class MembersContainer extends React.Component {
   componentDidMount() {
@@ -17,7 +18,7 @@ class MembersContainer extends React.Component {
           <Segment><MembersFilter/></Segment>
         </Grid.Column>
         <Grid.Column width={12}>
-          <Segment>Middle</Segment>
+          <MembersList members={this.props.members} />
         </Grid.Column>
       </Grid>
     );

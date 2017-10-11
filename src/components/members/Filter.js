@@ -4,7 +4,7 @@ import * as FilterActions from '../../actions/filterActions';
 import { bindActionCreators } from 'redux';
 import StatesSelect from '../interface/StatesSelect';
 
-class Filter extends React.Component {
+class MemberFilter extends React.Component {
   componentDidMount() { 
     this.props.fetchStates();
   }
@@ -31,4 +31,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(FilterActions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Filter);
+export default connect(mapStateToProps, mapDispatchToProps)(MemberFilter);
