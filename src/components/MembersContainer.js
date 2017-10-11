@@ -7,15 +7,11 @@ import { Grid, Segment, Loader } from 'semantic-ui-react';
 import MembersList from './members/List';
 
 class MembersContainer extends React.Component {
-  componentDidMount() {
-    this.props.fetchMembers({});
-  }
-
   render() {
     return (
       <Grid stackable columns={2}>
         <Grid.Column width={4}>
-          <Segment><MembersFilter/></Segment>
+          <Segment><MembersFilter membersFilter={this.props.fetchMembers} /></Segment>
         </Grid.Column>
         <Grid.Column width={12}>
           {this.props.loading ? <Loader active inline='centered' /> : <MembersList members={this.props.members} />}

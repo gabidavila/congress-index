@@ -7,10 +7,11 @@ import StatesSelect from '../interface/StatesSelect';
 class MemberFilter extends React.Component {
   componentDidMount() { 
     this.props.fetchStates();
+    this.props.membersFilter({});
   }
 
   handleChange = (value) => {
-    console.log(value);
+    this.props.membersFilter({selectedState: value});
   };
 
   render() {

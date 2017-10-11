@@ -1,5 +1,5 @@
 const membersReducer = (state = {
-  membersList: [], filters: {}, isLoading: false
+  membersList: [], filters: { selectedState: null, party: 'A', name: null}, isLoading: false
 }, action) => {
   switch (action.type) {
   case 'LOADING_MEMBERS':

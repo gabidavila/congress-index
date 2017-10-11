@@ -11,8 +11,15 @@ class MemberCard extends React.Component {
         <Card.Content href={`/member/${this.props.data.pp_member_id}`}>
           <Card.Header>{this.props.data.full_name}</Card.Header>
           <Card.Meta><Icon name='calendar'/> Next election in {this.props.data.next_election}</Card.Meta>
-          <Card.Description className="congress_type">{this.props.data.congress_type}&nbsp;
-            ({this.props.data.congress})</Card.Description>
+          <Card.Description className="congress_type">
+            <p>
+              {this.props.data.congress_type}&nbsp;
+              ({this.props.data.congress})
+            </p>
+            <p>
+              <em>{this.props.data.state.state} - {this.props.data.state.state_full}</em>
+            </p>
+          </Card.Description>
         </Card.Content>
         <Card.Content extra>
           <a>
