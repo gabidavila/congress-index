@@ -5,14 +5,15 @@ import { parties } from '../../helpers/parties';
 class MemberCard extends React.Component {
   render() {
     const profileImage = this.props.data.twitter_picture_url || '/images/default_user.png';
+    const profileUrl = `/members/${this.props.data.pp_member_id}`;
     return (
       <Card link className="member" color={parties[this.props.data.party].color}>
-        <a className='ui image' title={this.props.data.full_name}  href={`/member/${this.props.data.pp_member_id}`}>
-          <img alt={`/member/${this.props.data.full_name}`} src={profileImage} ref={img => this.img = img} onError={() => {
+        <a className='ui image' title={this.props.data.full_name}  href={profileUrl}>
+          <img alt={this.props.data.full_name} src={profileImage} ref={img => this.img = img} onError={() => {
             this.img.src = '/images/default_user.png';
           }} />
         </a>
-        <Card.Content href={`/member/${this.props.data.pp_member_id}`}>
+        <Card.Content href={profileUrl}>
           <Card.Header>{this.props.data.full_name}</Card.Header>
           <Card.Meta><Icon name='calendar'/> Next election in {this.props.data.next_election}</Card.Meta>
           <Card.Description className="congress_type">

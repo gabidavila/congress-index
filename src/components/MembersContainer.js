@@ -19,10 +19,10 @@ class MembersContainer extends React.Component {
     return (
       <Grid stackable columns={2}>
         <Grid.Column width={4}>
-          <Segment><MembersFilter onChangeHandle={this.handleChange} /></Segment>
+          <Segment><MembersFilter onChangeHandle={this.handleChange}/></Segment>
         </Grid.Column>
         <Grid.Column width={12}>
-          {this.props.loading ? <Loader active inline='centered' /> : <MembersList members={this.props.members} />}
+          {this.props.loading ? <Loader active inline='centered'/> : <MembersList members={this.props.members}/>}
         </Grid.Column>
       </Grid>
     );
@@ -31,7 +31,6 @@ class MembersContainer extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    filter: state.filters,
     members: state.members.membersList,
     loading: state.members.isLoading
   };
