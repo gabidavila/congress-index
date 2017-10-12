@@ -1,7 +1,7 @@
 import React from 'react';
-import { Dropdown, Form } from 'semantic-ui-react';
+import { Dropdown } from 'semantic-ui-react';
 import { parties } from '../../helpers/parties';
-import lodash from 'lodash';
+import _ from 'lodash';
 
 const PartySelect = (props) => {
 
@@ -9,8 +9,8 @@ const PartySelect = (props) => {
     props.onChangeHandle('party', data.value);
   };
 
-  const partyList = lodash.zip(Object.keys(parties), Object.keys(parties), lodash.map(parties, 'name')).map((party) => {
-    return lodash.zipObject(['key', 'value', 'text'], party);
+  const partyList = _.zip(Object.keys(parties), Object.keys(parties), _.map(parties, 'name')).map((party) => {
+    return _.zipObject(['key', 'value', 'text'], party);
   });
 
   return (

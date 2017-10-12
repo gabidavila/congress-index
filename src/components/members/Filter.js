@@ -47,7 +47,7 @@ class MemberFilter extends React.Component {
         </Form.Field>
         <Form.Field>
           <label>Congress Member</label>
-          <NameSearch/>
+          <NameSearch onChangeHandle={this.handleChange}/>
         </Form.Field>
       </Form>
     );

@@ -7,7 +7,11 @@ class MemberCard extends React.Component {
     const profileImage = this.props.data.twitter_picture_url || '/images/default_user.png';
     return (
       <Card link className="member" color={parties[this.props.data.party].color}>
-        <Image src={profileImage} href={`/member/${this.props.data.pp_member_id}`}/>
+        <a className='ui image' title={this.props.data.full_name}  href={`/member/${this.props.data.pp_member_id}`}>
+          <img alt={`/member/${this.props.data.full_name}`} src={profileImage} ref={img => this.img = img} onError={() => {
+            this.img.src = "/images/default_user.png";
+          }} />
+        </a>
         <Card.Content href={`/member/${this.props.data.pp_member_id}`}>
           <Card.Header>{this.props.data.full_name}</Card.Header>
           <Card.Meta><Icon name='calendar'/> Next election in {this.props.data.next_election}</Card.Meta>
