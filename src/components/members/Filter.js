@@ -33,7 +33,6 @@ class MemberFilter extends React.Component {
         <StatesSelect states={this.props.states} onChangeHandler={this.handleChange}/>
         <PartySelect onChangeHandle={this.handleChange} r/>
       </div>
-
     );
   }
 

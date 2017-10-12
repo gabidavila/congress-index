@@ -17,7 +17,7 @@ const PartySelect = (props) => {
     <Form.Field>
       <label>Party</label>
       <Dropdown placeholder='Select Party' fluid search selection onChange={handleChange}
-                options={[{ key: 'A', value: 'A', text: 'All Parties' }, ...partyList]}/>
+        options={[{ key: 'A', value: 'A', text: 'All Parties' }, ...partyList]}/>
     </Form.Field>
   );
 

@@ -8,7 +8,7 @@ import registerServiceWorker from './registerServiceWorker';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import membersReducer from './reducers/membersReducer';
 import statesReducer from './reducers/statesReducer';
-import filtersReducer from "./reducers/filtersReducer";
+import filtersReducer from './reducers/filtersReducer';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
