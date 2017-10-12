@@ -14,7 +14,7 @@ const PartySelect = (props) => {
   });
 
   return (
-    <Dropdown placeholder='Select Party' fluid search selection onChange={handleChange}
+    <Dropdown placeholder='Select Party' value={props.selectedValue} fluid search selection onChange={handleChange}
       options={[{ key: 'A', value: 'A', text: 'All Parties' }, ...partyList]}/>
   );
 };

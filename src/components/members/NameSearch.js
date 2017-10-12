@@ -6,8 +6,8 @@ const NameSearch = (props) => {
     props.onChangeHandle('name', event.target.value);
   };
 
-  return(
-    <Input placeholder='Search Member' icon='search' fluid onChange={handleChange} />
+  return (
+    <Input placeholder='Search Member' value={props.typedValue || ''}  icon='search' fluid onChange={handleChange} />
   );
 };
 

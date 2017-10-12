@@ -19,7 +19,7 @@ const CongressSelect = (props) => {
   ];
 
   return (
-    <Dropdown placeholder='Select Chamber' fluid selection onChange={handleChange}
+    <Dropdown placeholder='Select Chamber' value={props.selectedValue} fluid selection onChange={handleChange}
       options={[{ key: 'all', value: '', text: 'All Chambers' }, ...congressList]}/>
   );
 };

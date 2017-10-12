@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Image, Icon } from 'semantic-ui-react';
+import { Card, Icon } from 'semantic-ui-react';
 import { parties } from '../../helpers/parties';
 
 class MemberCard extends React.Component {
@@ -9,7 +9,7 @@ class MemberCard extends React.Component {
       <Card link className="member" color={parties[this.props.data.party].color}>
         <a className='ui image' title={this.props.data.full_name}  href={`/member/${this.props.data.pp_member_id}`}>
           <img alt={`/member/${this.props.data.full_name}`} src={profileImage} ref={img => this.img = img} onError={() => {
-            this.img.src = "/images/default_user.png";
+            this.img.src = '/images/default_user.png';
           }} />
         </a>
         <Card.Content href={`/member/${this.props.data.pp_member_id}`}>

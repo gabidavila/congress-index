@@ -11,7 +11,9 @@ export const fetchStates = () => {
 };
 
 export const addFilter = (filterObj) => {
-  return function(dispatch) {
-    dispatch({type: 'ADD_FILTER', payload: {...filterObj}});
-  };
+  return { type: 'ADD_FILTER', payload: { ...filterObj } };
+};
+
+export const resetFilter = () => {
+  return { type: 'RESET_FILTER' };
 };

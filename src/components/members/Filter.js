@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as FilterActions from '../../actions/filterActions';
+import { fetchMembers } from '../../actions/membersActions';
 import { bindActionCreators } from 'redux';
-import { Form } from 'semantic-ui-react';
+import { Form, Button } from 'semantic-ui-react';
 import StatesSelect from '../interface/StatesSelect';
 import PartySelect from '../interface/PartySelect';
 import CongressSelect from '../interface/CongressSelect';
-import NameSearch from "./NameSearch";
+import NameSearch from './NameSearch';
 
 class MemberFilter extends React.Component {
   constructor(props) {
@@ -18,15 +19,20 @@ class MemberFilter extends React.Component {
 
   componentDidMount() {
     this.props.fetchStates();
-    this.props.membersFilter({});
   }
+
+  handleReset = () => {
+    this.props.resetFilter();
+    this.props.onChangeHandle({});
+    this.setState({ selectedState: null, party: 'A', name: null, congress: '' });
+  };
 
   handleChange = (key, value) => {
     const filter = { [key]: value };
 
     this.setState({ ...filter }, () => {
       this.props.addFilter(filter);
-      this.props.membersFilter(this.state);
+      this.props.onChangeHandle(this.state);
     });
   };
 
@@ -35,20 +41,22 @@ class MemberFilter extends React.Component {
       <Form>
         <Form.Field>
           <label>Congress</label>
-          <CongressSelect onChangeHandle={this.handleChange}/>
+          <CongressSelect selectedValue={this.state.congress} onChangeHandle={this.handleChange}/>
         </Form.Field>
         <Form.Field>
           <label>Party</label>
-          <PartySelect onChangeHandle={this.handleChange}/>
+          <PartySelect selectedValue={this.state.party} onChangeHandle={this.handleChange}/>
         </Form.Field>
         <Form.Field>
           <label>State</label>
-          <StatesSelect states={this.props.states} onChangeHandler={this.handleChange}/>
+          <StatesSelect selectedValue={this.state.selectedState} states={this.props.states}
+            onChangeHandler={this.handleChange}/>
         </Form.Field>
         <Form.Field>
           <label>Congress Member</label>
-          <NameSearch onChangeHandle={this.handleChange}/>
+          <NameSearch typedValue={this.state.name} onChangeHandle={this.handleChange}/>
         </Form.Field>
+        <Button color="orange" onClick={this.handleReset} fluid>Reset</Button>
       </Form>
     );
   }
@@ -58,12 +66,13 @@ class MemberFilter extends React.Component {
 function mapStateToProps(state) {
   return {
     states: state.states.statesList,
-    filters: state.filters
+    filters: state.filters,
+    members: state.members.membersList
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(FilterActions, dispatch);
+  return bindActionCreators({ ...FilterActions, ...{ fetchMembers } }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MemberFilter);
