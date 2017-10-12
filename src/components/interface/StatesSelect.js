@@ -15,10 +15,7 @@ const StatesSelect = (props) => {
   })];
 
   return (
-    <Form.Field>
-      <label>State</label>
-      <Dropdown placeholder='Select State' fluid search selection onChange={handleChange} options={statesList}/>
-    </Form.Field>
+    <Dropdown placeholder='Select State' fluid search selection onChange={handleChange} options={statesList}/>
   );
 };
 
