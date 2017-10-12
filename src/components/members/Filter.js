@@ -4,6 +4,7 @@ import * as FilterActions from '../../actions/filterActions';
 import { bindActionCreators } from 'redux';
 import StatesSelect from '../interface/StatesSelect';
 import PartySelect from '../interface/PartySelect';
+import CongressSelect from '../interface/CongressSelect';
 
 class MemberFilter extends React.Component {
   constructor(props) {
@@ -30,6 +31,7 @@ class MemberFilter extends React.Component {
   render() {
     return (
       <div>
+        <CongressSelect onChangeHandle={this.handleChange}/>
         <StatesSelect states={this.props.states} onChangeHandler={this.handleChange}/>
         <PartySelect onChangeHandle={this.handleChange} r/>
       </div>

@@ -20,7 +20,6 @@ const PartySelect = (props) => {
         options={[{ key: 'A', value: 'A', text: 'All Parties' }, ...partyList]}/>
     </Form.Field>
   );
-
 };
 
 export default PartySelect;

@@ -4,7 +4,8 @@ const BASE_API_URL = process.env.REACT_APP_BASE_API_URL;
 
 const buildFilter = (filterObj) => {
   const party = filterObj.party || 'A';
-  let options = { party, name: filterObj.name };
+  const congress = filterObj.congress;
+  let options = { party, name: filterObj.name, congress };
 
   if (filterObj.selectedState !== 'A') {
     options.state = filterObj.selectedState;
