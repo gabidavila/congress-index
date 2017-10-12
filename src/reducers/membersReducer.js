@@ -1,5 +1,5 @@
 const membersReducer = (state = {
-  membersList: [], filters: { selectedState: null, party: 'A', name: null}, isLoading: false
+  membersList: [], isLoading: false
 }, action) => {
   switch (action.type) {
   case 'LOADING_MEMBERS':
@@ -9,7 +9,6 @@ const membersReducer = (state = {
   default:
     return state;
   }
-}
-;
+};
 
 export default membersReducer;

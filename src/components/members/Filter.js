@@ -3,20 +3,37 @@ import { connect } from 'react-redux';
 import * as FilterActions from '../../actions/filterActions';
 import { bindActionCreators } from 'redux';
 import StatesSelect from '../interface/StatesSelect';
+import PartySelect from '../interface/PartySelect';
 
 class MemberFilter extends React.Component {
-  componentDidMount() { 
+  constructor(props) {
+    super(props);
+    this.state = {
+      ...props.filters
+    };
+  }
+
+  componentDidMount() {
     this.props.fetchStates();
     this.props.membersFilter({});
   }
 
-  handleChange = (value) => {
-    this.props.membersFilter({selectedState: value});
+  handleChange = (key, value) => {
+    const filter = { [key]: value };
+
+    this.setState({ ...filter }, () => {
+      this.props.addFilter(filter);
+      this.props.membersFilter(this.state);
+    });
   };
 
   render() {
     return (
-      <StatesSelect states={this.props.states} onChangeHandler={this.handleChange}/>
+      <div>
+        <StatesSelect states={this.props.states} onChangeHandler={this.handleChange}/>
+        <PartySelect onChangeHandle={this.handleChange} r/>
+      </div>
+
     );
   }
 
@@ -24,7 +41,8 @@ class MemberFilter extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    states: state.states.statesList
+    states: state.states.statesList,
+    filters: state.filters
   };
 }
 

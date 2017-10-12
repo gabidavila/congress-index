@@ -1,7 +1,7 @@
 const parties = {
-  'I': { color: 'green', name: 'Independent' },
+  'D': { color: 'blue', name: 'Democrat' },
   'R': { color: 'red', name: 'Republican' },
-  'D': { color: 'blue', name: 'Democrat' }
+  'I': { color: 'green', name: 'Independent' }
 };
 
 export { parties };

@@ -3,10 +3,10 @@ import { Dropdown, Form } from 'semantic-ui-react';
 
 const StatesSelect = (props) => {
   const handleChange = (event, data) => {
-    props.onChangeHandler(data.value);
+    props.onChangeHandler('selectedState', data.value);
   };
 
-  let statesList = [{
+  const statesList = [{
     key: 'A',
     value: 'A',
     text: 'All States',

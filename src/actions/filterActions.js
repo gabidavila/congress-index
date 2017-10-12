@@ -9,3 +9,9 @@ export const fetchStates = () => {
       });
   };
 };
+
+export const addFilter = (filterObj) => {
+  return function(dispatch) {
+    dispatch({type: 'ADD_FILTER', payload: {...filterObj}});
+  };
+};
