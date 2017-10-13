@@ -14,7 +14,7 @@ class ProfileContainer extends React.Component {
   componentDidMount() {
     getMemberById(this.props.match.params.id)
       .then((member) => {
-        this.setState({ profile: member });
+        this.setState({ profile: member.data.attributes });
       });
   }
 

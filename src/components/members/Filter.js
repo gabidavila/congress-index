@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as FilterActions from '../../actions/filterActions';
 import { fetchMembers } from '../../actions/membersActions';
-import { initialState } from "../../helpers/filter";
+import { initialState } from '../../helpers/filter';
 import { bindActionCreators } from 'redux';
 import { Form, Button } from 'semantic-ui-react';
 import StatesSelect from '../interface/StatesSelect';
@@ -51,7 +51,7 @@ class MemberFilter extends React.Component {
         <Form.Field>
           <label>State</label>
           <StatesSelect selectedValue={this.state.selectedState} states={this.props.states}
-                        onChangeHandler={this.handleChange}/>
+            onChangeHandler={this.handleChange}/>
         </Form.Field>
         <Form.Field>
           <label>Congress Member</label>

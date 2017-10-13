@@ -1,6 +1,6 @@
 import React from 'react';
 import { Dropdown } from 'semantic-ui-react';
-import { parties } from '../../helpers/parties';
+import { parties } from '../../helpers/congress';
 import _ from 'lodash';
 
 const PartySelect = (props) => {

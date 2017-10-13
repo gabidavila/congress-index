@@ -5,7 +5,7 @@ export const fetchStates = () => {
     dispatch({ type: 'LOADING_STATES' });
     getAllStates()
       .then((states) => {
-        dispatch({ type: 'LOADED_STATES', payload: { states: states["data"] } });
+        dispatch({ type: 'LOADED_STATES', payload: { states: states['data'] } });
       });
   };
 };

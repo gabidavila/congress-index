@@ -1,4 +1,4 @@
-import {initialState} from "../helpers/filter";
+import {initialState} from '../helpers/filter';
 
 const filtersReducer = (state = { ...initialState() }, action) => {
   switch (action.type) {

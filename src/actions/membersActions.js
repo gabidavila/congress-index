@@ -5,7 +5,7 @@ export const fetchMembers = (filterObj) => {
     dispatch({ type: 'LOADING_MEMBERS' });
     getAllMembers(filterObj)
       .then((members) => {
-        dispatch({ type: 'LOADED_MEMBERS', payload: { members: members["data"] } });
+        dispatch({ type: 'LOADED_MEMBERS', payload: { members: members['data'] } });
       });
   };
 };

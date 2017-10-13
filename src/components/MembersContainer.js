@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as MemberActions from '../actions/membersActions';
 import { bindActionCreators } from 'redux';
-import { initialState } from "../helpers/filter";
+import { initialState } from '../helpers/filter';
 import MembersFilter from './members/Filter';
 import { Grid, Segment, Loader, Button, Header } from 'semantic-ui-react';
 import MembersList from './members/List';
@@ -33,7 +33,7 @@ class MembersContainer extends React.Component {
               <div>
                 <Segment vertical textAlign='center'>
                   <Button circular disabled={!this.state.previousButton} size="big">&lt;</Button>
-                  <Header as='span' style={{ margin: "10px" }}>Members&nbsp;</Header>
+                  <Header as='span' style={{ margin: '10px' }}>Members&nbsp;</Header>
                   <Button circular disabled={!this.state.nextButton} size="big">&gt;</Button>
                 </Segment>
                 <Segment vertical>
