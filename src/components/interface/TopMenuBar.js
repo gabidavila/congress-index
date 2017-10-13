@@ -3,14 +3,12 @@ import { Container, Image, Menu } from 'semantic-ui-react';
 
 const TopMenuBar = () => {
   return (
-    <Menu color='yellow' inverted borderless>
+    <Menu color='yellow' stackable inverted borderless>
       <Container>
         <Menu.Item as='a' href='/' header>
-          <Image
-            src='/images/logo.png'
-            style={{ marginRight: '1.5em' }}
+          <Image centered
+            src='/images/logo.png' alt='Congress Browser'
           />
-          <span style={{fontSize: '18px'}}>Congress Browser</span>
         </Menu.Item>
         <Menu.Item as='a' href='/'>Home</Menu.Item>
       </Container>
