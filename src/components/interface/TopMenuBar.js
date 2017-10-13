@@ -3,7 +3,7 @@ import { Container, Image, Menu } from 'semantic-ui-react';
 
 const TopMenuBar = () => {
   return (
-    <Menu color='yellow' stackable inverted borderless>
+    <Menu color='yellow' stackable inverted borderless className='remove-radius'>
       <Container>
         <Menu.Item as='a' href='/' header>
           <Image centered
