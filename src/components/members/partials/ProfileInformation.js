@@ -1,6 +1,5 @@
 import React from 'react';
-import { Header, Icon, Segment, Label } from 'semantic-ui-react';
-import { parties, chambers } from '../../../helpers/congress';
+import { Button, Header, Icon, Segment, Label } from 'semantic-ui-react';
 import moment from 'moment';
 
 const ProfileInformation = ({ member }) => {
@@ -28,6 +27,14 @@ const ProfileInformation = ({ member }) => {
         <Icon name='info circle'/> Information
       </Header>
       <Segment color='grey'>
+        <Button size='huge' primary className='remove-radius' floated='right' animated='vertical'>
+          <Button.Content visible>
+            <Icon name='phone' />{member.phone}
+          </Button.Content>
+          <Button.Content hidden>
+            <Icon name='call square' />Call Member
+          </Button.Content>
+        </Button>
         <p><strong>Next Election: </strong>{member['next-election']}</p>
         <p><strong>Date of Birth: </strong>{moment(member['propublica-profile']['date-of-birth'], "YYYY-MM-DD").format("MM/DD/YYYY")}</p>
       </Segment>

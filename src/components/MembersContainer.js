@@ -32,9 +32,9 @@ class MembersContainer extends React.Component {
             this.props.loading ? <Loader active inline='centered'/> : (
               <div>
                 <Segment vertical textAlign='center'>
-                  <Button circular disabled={!this.state.previousButton} size="big">&lt;</Button>
+                  <Button disabled={!this.state.previousButton} color={this.state.previousButton ? 'blue' : 'grey' } content='Previous' icon='left arrow' labelPosition='left' />
                   <Header as='span' style={{ margin: '10px' }}>Members&nbsp;</Header>
-                  <Button circular disabled={!this.state.nextButton} size="big">&gt;</Button>
+                  <Button disabled={!this.state.nextButton} color={this.state.nextButton ? 'blue' : 'grey' } content='Next' icon='right arrow' labelPosition='right' />
                 </Segment>
                 <Segment vertical>
                   <MembersList members={this.props.members}/>
