@@ -4,32 +4,33 @@ import { parties } from '../../helpers/parties';
 
 class MemberCard extends React.Component {
   render() {
-    const profileImage = this.props.data.twitter_picture_url || '/images/default_user.png';
-    const profileUrl = `/members/${this.props.data.pp_member_id}`;
+    const profile = this.props.data.attributes;
+    const profileImage = profile["twitter-picture-url"] || '/images/default_user.png';
+    const profileUrl = `/members/${ profile["pp-member-id"]}`;
     return (
-      <Card link className="member" color={parties[this.props.data.party].color}>
-        <a className='ui image' title={this.props.data.full_name}  href={profileUrl}>
-          <img alt={this.props.data.full_name} src={profileImage} ref={img => this.img = img} onError={() => {
+      <Card link className="member" color={parties[profile.party].color}>
+        <a className='ui image' title={profile["full-name"]} href={profileUrl}>
+          <img alt={profile["full-name"]} src={profileImage} ref={img => this.img = img} onError={() => {
             this.img.src = '/images/default_user.png';
-          }} />
+          }}/>
         </a>
         <Card.Content href={profileUrl}>
-          <Card.Header>{this.props.data.full_name}</Card.Header>
-          <Card.Meta><Icon name='calendar'/> Next election in {this.props.data.next_election}</Card.Meta>
+          <Card.Header>{profile["full-name"]}</Card.Header>
+          <Card.Meta><Icon name='calendar'/> Next election in {profile["next-election"]}</Card.Meta>
           <Card.Description className="congress_type">
             <p>
-              {this.props.data.congress_type}&nbsp;
-              ({this.props.data.congress})
+              {profile["congress-type"]}&nbsp;
+              ({profile.congress})
             </p>
             <p>
-              <em>{this.props.data.state.state} - {this.props.data.state.state_full}</em>
+              <em>{profile.state.state} - {profile.state["state-full"]}</em>
             </p>
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
           <a>
-            <Icon color={parties[this.props.data.party].color} name='user'/>
-            <strong>{parties[this.props.data.party].name}</strong>
+            <Icon color={parties[profile.party].color} name='user'/>
+            <strong>{parties[profile.party].name}</strong>
           </a>
         </Card.Content>
       </Card>

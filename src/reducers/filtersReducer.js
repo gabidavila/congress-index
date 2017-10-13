@@ -1,5 +1,6 @@
-const initialState = { selectedState: null, party: 'A', name: null, congress: '' };
-const filtersReducer = (state = { ...initialState }, action) => {
+import {initialState} from "../helpers/filter";
+
+const filtersReducer = (state = { ...initialState() }, action) => {
   switch (action.type) {
   case 'ADD_FILTER':
     return Object.assign({}, state, action.payload);

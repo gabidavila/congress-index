@@ -11,7 +11,7 @@ const StatesSelect = (props) => {
     value: 'A',
     text: 'All States',
   }, ...props.states.map((state) => {
-    return { key: state.state, value: state.state, text: state.state_full };
+    return { key: state.attributes.state, value: state.attributes.state, text: state.attributes['state-full'] };
   })];
 
   return (
