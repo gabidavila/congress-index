@@ -1,8 +1,8 @@
 import React from 'react';
 import { Grid, Loader, Divider } from 'semantic-ui-react';
-import ProfiileImage from "./partials/PorfileImage";
-import ProfileInformation from "./partials/ProfileInformation";
-import ProfileSocialMedia from "./partials/ProfileSocialMedia";
+import ProfiileImage from './partials/PorfileImage';
+import ProfileInformation from './partials/ProfileInformation';
+import ProfileSocialMedia from './partials/ProfileSocialMedia';
 
 class MemberProfile extends React.Component {
   render() {

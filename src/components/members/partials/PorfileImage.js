@@ -16,11 +16,11 @@ const ProfiileImage = ({ member }) => {
         }}
         />
       </div>
-      <Segment inverted textAlign='center'>
-        <Icon name={chambers[member['congress-type']].icon}/>{chambers[member['congress-type']].name}
+      <Segment color='black' textAlign='center'>
+        <Icon name={chambers[member['congress-type']].icon} size='medium'/>{chambers[member['congress-type']].name}
       </Segment>
-      <Segment inverted color={parties[member.party].color} textAlign='center'>
-        <Icon name='fa'/>{parties[member.party].name}
+      <Segment color={parties[member.party].color} textAlign='center'>
+        <Icon name='fa' size='large' color={parties[member.party].color}/>{parties[member.party].name}
       </Segment>
     </div>
   );
