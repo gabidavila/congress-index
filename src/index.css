@@ -45,3 +45,9 @@ label {
 .remove-radius {
     border-radius: 0 !important;
 }
+
+.social-media .button {
+    margin: 5px 0 5px 0;
+    font-size: 18px;
+    font-weight: lighter;
+}

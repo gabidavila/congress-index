@@ -29,7 +29,7 @@ const ProfileInformation = ({ member }) => {
       </Header>
       <Segment>
         <Button size='large' primary className='remove-radius' floated='right' animated='vertical'>
-          <Button.Content visible>
+          <Button.Content visible id="call-representative">
             <Icon name='phone' />{member.phone}
           </Button.Content>
           <Button.Content hidden>

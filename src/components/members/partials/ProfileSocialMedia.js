@@ -3,7 +3,7 @@ import { Button, Icon, Header } from 'semantic-ui-react';
 
 const ProfileSocialMedia = ({member}) => {
   return (
-    <div className='socialMedia'>
+    <div className='social-media'>
       <Header as='h4' textAlign='center' color='black'>
         <Icon name='id card outline'/> Social Media
       </Header>

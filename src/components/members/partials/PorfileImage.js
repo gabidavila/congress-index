@@ -17,7 +17,7 @@ const ProfiileImage = ({ member }) => {
         />
       </div>
       <Segment color='black' textAlign='center'>
-        <Icon name={chambers[member['congress-type']].icon} size='medium'/>{chambers[member['congress-type']].name}
+        <Icon name={chambers[member['congress-type']].icon} size='small'/>{chambers[member['congress-type']].name}
       </Segment>
       <Segment color={parties[member.party].color} textAlign='center'>
         <Icon name='fa' size='large' color={parties[member.party].color}/>{parties[member.party].name}
