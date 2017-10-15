@@ -10,12 +10,15 @@ const getToken = (targetLog) => {
         const setup = Twilio.Device.setup(json.token);
 
         Twilio.Device.ready(function (device) {
+          loggingInfo.style.display = 'block';
+          loaderInfo.style.display = 'none';
           loggingInfo.innerHTML = 'Starting connection.';
           resolve(setup);
         });
 
         Twilio.Device.error(function (error) {
-          loggingInfo.innerHTML = 'Error: ' + error.message;
+          loggingInfo.innerHTML = 'An error occurred.';
+          console.log(error.message);
           reject(error.message);
         });
 
@@ -41,26 +44,34 @@ const makeCall = (number) => {
 
 let conn;
 let loggingInfo;
+let loaderInfo;
 
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('root').addEventListener('click', (event) => {
-    if (event.target.id === 'call-representative') {
+    let targetElement = event.target;
+    if (targetElement.id === 'call-representative') {
       const number = event.target.dataset.number;
       loggingInfo = document.getElementById('calling-log');
-      loggingInfo.style.display = 'block';
+      loaderInfo = document.getElementById('calling-loader');
+      loaderInfo.style.display = 'block';
 
       if (conn) {
         Twilio.Device.disconnectAll();
         conn = null;
-        event.target.innerHTML = '<i aria-hidden="true" class="call square icon"></i>Call Member';
+        changeButtonMessage(targetElement, 'call square', 'Call Member, free!');
       } else if (number) {
         getToken().then((setup) => {
           conn = makeCall(number);
+          changeButtonMessage(targetElement, 'call square', 'Calling Member');
           return conn;
         }).then((conn) => {
-          event.target.innerHTML = '<i aria-hidden="true" class="remove icon"></i>Hang up';
+          changeButtonMessage(targetElement, 'remove', 'Hang up');
         });
       }
     }
   });
 });
+
+function changeButtonMessage(button, icon, message) {
+  button.innerHTML = `<i class="${icon} icon"></i>${message}`;
+}

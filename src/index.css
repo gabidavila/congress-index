@@ -52,6 +52,6 @@ label {
     font-weight: lighter;
 }
 
-#calling-log {
+#calling-log, #calling-loader {
     display: none
 }
