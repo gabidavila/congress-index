@@ -11,7 +11,6 @@ const getToken = (targetLog) => {
 
         Twilio.Device.ready(function (device) {
           loggingInfo.style.display = 'block';
-          loaderInfo.style.display = 'none';
           loggingInfo.innerHTML = 'Starting connection.';
           resolve(setup);
         });
@@ -52,8 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (targetElement.id === 'call-representative') {
       const number = event.target.dataset.number;
       loggingInfo = document.getElementById('calling-log');
-      loaderInfo = document.getElementById('calling-loader');
-      loaderInfo.style.display = 'block';
 
       if (conn) {
         Twilio.Device.disconnectAll();
