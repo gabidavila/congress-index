@@ -51,3 +51,7 @@ label {
     font-size: 18px;
     font-weight: lighter;
 }
+
+#calling-log {
+    display: none
+}

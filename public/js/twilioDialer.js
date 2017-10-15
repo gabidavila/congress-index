@@ -10,21 +10,21 @@ const getToken = (targetLog) => {
         const setup = Twilio.Device.setup(json.token);
 
         Twilio.Device.ready(function (device) {
-          console.log('Twilio.Device Ready!');
+          loggingInfo.innerHTML = 'Starting connection.';
           resolve(setup);
         });
 
         Twilio.Device.error(function (error) {
-          console.log('Twilio.Device Error: ' + error.message);
+          loggingInfo.innerHTML = 'Error: ' + error.message;
           reject(error.message);
         });
 
         Twilio.Device.connect(function (conn) {
-          console.log('Successfully established call!');
+          loggingInfo.innerHTML = 'Connection established.';
         });
 
         Twilio.Device.disconnect(function (conn) {
-          console.log('Call ended.');
+          loggingInfo.innerHTML = 'Call ended.';
         });
       });
     });
@@ -40,11 +40,15 @@ const makeCall = (number) => {
 };
 
 let conn;
+let loggingInfo;
 
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('root').addEventListener('click', (event) => {
     if (event.target.id === 'call-representative') {
       const number = event.target.dataset.number;
+      loggingInfo = document.getElementById('calling-log');
+      loggingInfo.style.display = 'block';
+
       if (conn) {
         Twilio.Device.disconnectAll();
         conn = null;

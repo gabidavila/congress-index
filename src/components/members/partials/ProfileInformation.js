@@ -28,9 +28,11 @@ const ProfileInformation = ({ member }) => {
         <Icon name='info circle'/> Information
       </Header>
       <Segment>
+
         <Button size='large' primary data-number={member.phone} className='remove-radius' floated='right' id="call-representative">
-          <Icon name='call square' />Call Member
+          <Icon name='call square' />Call Member <br/>
         </Button>
+        <Label id='calling-log' basic color='grey' style={{float: 'right', fontSize: '18px'}}></Label>
         <p><strong>District: </strong>{member['propublica-profile']['district']}</p>
         <p><strong>Next Election: </strong>{member['next-election']}</p>
         <p><strong>Date of Birth: </strong>{moment(member['propublica-profile']['date-of-birth'], 'YYYY-MM-DD').format('MM/DD/YYYY')}</p>
