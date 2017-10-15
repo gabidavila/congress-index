@@ -6,8 +6,7 @@ const getToken = () => {
   return fetch(API_URL + '/twilio/token')
     .then((response) => response.json())
     .then((json) => {
-      Twilio.Device.setup(json.token);
-
+      const setup = Twilio.Device.setup(json.token);
       Twilio.Device.ready(function (device) {
         console.log('Twilio.Device Ready!');
       });
@@ -23,6 +22,7 @@ const getToken = () => {
       Twilio.Device.disconnect(function (conn) {
         console.log('Call ended.');
       });
+      return setup;
     });
 };
 
@@ -39,18 +39,21 @@ let conn;
 
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('root').addEventListener('click', (event) => {
-    if (event.target.children[0] && event.target.children[0].id === 'call-representative') {
-      const phoneButton = event.target;
-      const number = event.target.children[0].innerText;
+    if (event.target.id === 'call-representative') {
+      const number = event.target.dataset.number;
       if (number) {
         getToken().then(() => {
           if (conn === undefined) {
+            event.target.innerHTML = 'Calling...';
             conn = makeCall(number);
           }
           return conn;
         }).then((conn) => {
+          event.target.innerHTML = '<i aria-hidden="true" class="remove icon"></i>Hang up';
           if (conn && conn.status() === 'open') {
-            Twilio.Device.disconnectAll();
+
+            const resp = Twilio.Device.disconnectAll();
+            event.target.innerHTML = '<i aria-hidden="true" class="call square icon"></i>Call Member';
           }
         });
       }

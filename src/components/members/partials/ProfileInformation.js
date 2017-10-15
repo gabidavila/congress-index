@@ -28,13 +28,8 @@ const ProfileInformation = ({ member }) => {
         <Icon name='info circle'/> Information
       </Header>
       <Segment>
-        <Button size='large' primary className='remove-radius' floated='right' animated='vertical'>
-          <Button.Content visible id="call-representative">
-            <Icon name='phone' />{member.phone}
-          </Button.Content>
-          <Button.Content hidden>
-            <Icon name='call square' />Call Member
-          </Button.Content>
+        <Button size='large' primary data-number={member.phone} className='remove-radius' floated='right' id="call-representative">
+          <Icon name='call square' />Call Member
         </Button>
         <p><strong>District: </strong>{member['propublica-profile']['district']}</p>
         <p><strong>Next Election: </strong>{member['next-election']}</p>
