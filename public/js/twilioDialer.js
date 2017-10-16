@@ -1,8 +1,7 @@
 const API_URL = 'http://ppbe.ngrok.io';
 
-const phoneButton =  document.getElementById('call-representative');
 let tokenCache = null;
-const getToken = (targetLog) => {
+const getToken = () => {
   tokenCache = tokenCache || fetch(API_URL + '/twilio/token')
     .then((response) => response.json())
     .then((json) => {
@@ -43,7 +42,6 @@ const makeCall = (number) => {
 
 let conn;
 let loggingInfo;
-let loaderInfo;
 
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('root').addEventListener('click', (event) => {
@@ -61,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
           conn = makeCall(number);
           changeButtonMessage(targetElement, 'call square', 'Calling Member');
           return conn;
-        }).then((conn) => {
+        }).then(() => {
           changeButtonMessage(targetElement, 'remove', 'Hang up');
         });
       }
