@@ -14,7 +14,7 @@ const CommitteeItem = (props) => {
       <Accordion.Title key={uuid()} active={props.activeIndex === props.index}
         index={props.index} onClick={handleClick}>
         <Icon name='dropdown'/>
-        {committee.name} - {committee.code}
+        <span dangerouslySetInnerHTML={{__html: committee.name}}></span> - {committee.code}
       </Accordion.Title>,
       <Accordion.Content key={uuid()} active={props.activeIndex === props.index}>
         <p>

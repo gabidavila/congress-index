@@ -21,11 +21,8 @@ class ProfileContainer extends React.Component {
   render() {
     return (
       <Grid stackable columns={2}>
-        <Grid.Column width={13}>
+        <Grid.Column width={16}>
           <MemberProfile profile={this.state.profile}/>
-        </Grid.Column>
-        <Grid.Column width={3}>
-
         </Grid.Column>
       </Grid>
     );

@@ -29,13 +29,13 @@ const ProfileInformation = ({ member }) => {
       </Header>
       <Segment>
 
-        <Button size='large' primary data-number={member.phone} className='remove-radius' floated='right'
+        <Button size='large' color='positive' data-number={member.phone} className='remove-radius' floated='right'
           id="call-representative">
           <Icon name='call square'/>Call Member, free!
         </Button>
         <Label id='calling-log' basic color='grey' style={{ float: 'right', fontSize: '18px' }}></Label>
         <Loader active id="calling-loader"/>
-        <p><strong>District: </strong>{member['propublica-profile']['district']}</p>
+        {member['congress-type'] === 'house' ? <p><strong>District: </strong>{member['propublica-profile']['district']}</p> : null}
         <p><strong>Next Election: </strong>{member['next-election']}</p>
         <p><strong>Date of
           Birth: </strong>{moment(member['propublica-profile']['date-of-birth'], 'YYYY-MM-DD').format('MM/DD/YYYY')}</p>

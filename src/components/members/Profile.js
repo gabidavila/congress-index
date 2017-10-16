@@ -15,14 +15,15 @@ class MemberProfile extends React.Component {
 
     return (
       <Grid stackable columns={2}>
-        <Grid.Column width={4}>
+        <Grid.Column width={3}>
           <ProfiileImage member={member} />
-          <Divider/>
-          <ProfileSocialMedia member={member}/>
         </Grid.Column>
-        <Grid.Column width={12}>
+        <Grid.Column width={10}>
           <ProfileInformation member={member}/>
           <RolesList roles={member.career.roles}/>
+        </Grid.Column>
+        <Grid.Column width={3}>
+          <ProfileSocialMedia member={member}/>
         </Grid.Column>
       </Grid>
     );
