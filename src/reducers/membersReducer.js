@@ -1,5 +1,5 @@
 const membersReducer = (state = {
-  membersList: [], isLoading: false
+  membersList: [], isLoading: false, pagination: {}
 }, action) => {
   switch (action.type) {
   case 'LOADING_MEMBERS':

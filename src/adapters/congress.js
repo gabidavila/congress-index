@@ -6,9 +6,9 @@ const buildFilter = (filterObj) => {
 
   const party = filterObj.party || 'A';
   const congress = filterObj.congress;
-  const offset = filterObj.offset;
+  const page = filterObj.page;
 
-  let options = { party, name: filterObj.name, congress, offset };
+  let options = { party, name: filterObj.name, congress, page };
 
   if (filterObj.selectedState !== 'A') {
     options.state = filterObj.selectedState;

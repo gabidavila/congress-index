@@ -9,3 +9,7 @@ export const fetchMembers = (filterObj) => {
       });
   };
 };
+
+export const setPagination = (paginationMeta) => {
+  return { type: 'CHANGE_PAGE', payload: paginationMeta };
+};

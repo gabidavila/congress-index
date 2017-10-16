@@ -4,17 +4,24 @@ import * as MemberActions from '../actions/membersActions';
 import { bindActionCreators } from 'redux';
 import { initialState } from '../helpers/filter';
 import MembersFilter from './members/Filter';
-import { Grid, Segment, Loader, Button, Header } from 'semantic-ui-react';
+import { Grid, Segment, Loader, Button, Header, Divider, Icon } from 'semantic-ui-react';
 import MembersList from './members/List';
+import Zipcode from './interface/Zipcode';
 
 class MembersContainer extends React.Component {
   state = {
-    offset: 0,
+    page: 1,
     nextButton: true,
     previousButton: false
   };
+
   handleChange = (filter) => {
+    console.log(filter);
     this.props.fetchMembers(filter);
+  };
+
+  handleNextButton = () => {
+
   };
 
   componentDidMount() {
@@ -25,7 +32,19 @@ class MembersContainer extends React.Component {
     return (
       <Grid stackable columns={2}>
         <Grid.Column width={4}>
-          <Segment><MembersFilter onChangeHandle={this.handleChange}/></Segment>
+          <Segment>
+            <Header as='h3'>
+              <Icon name='search'/> Look in my area
+            </Header>
+            <Zipcode/>
+          </Segment>
+          <Divider/>
+          <Segment>
+            <Header as='h3'>
+              <Icon name='filter'/> Filter Members
+            </Header>
+            <MembersFilter onChangeHandle={this.handleChange}/>
+          </Segment>
         </Grid.Column>
         <Grid.Column width={12}>
           {
@@ -34,7 +53,7 @@ class MembersContainer extends React.Component {
                 <Segment vertical textAlign='center'>
                   <Button disabled={!this.state.previousButton} color={this.state.previousButton ? 'blue' : 'grey' } content='Previous' icon='left arrow' labelPosition='left' />
                   <Header as='span' style={{ margin: '10px' }}>Members&nbsp;</Header>
-                  <Button disabled={!this.state.nextButton} color={this.state.nextButton ? 'blue' : 'grey' } content='Next' icon='right arrow' labelPosition='right' />
+                  <Button disabled={!this.state.nextButton} onClick={this.handleNextButton} color={this.state.nextButton ? 'blue' : 'grey' } content='Next' icon='right arrow' labelPosition='right' />
                 </Segment>
                 <Segment vertical>
                   <MembersList members={this.props.members}/>
