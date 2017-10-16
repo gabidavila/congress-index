@@ -1,4 +1,4 @@
-const API_URL = 'http://ppbe.ngrok.io';
+const API_URL = 'https://congress-api.ngrok.io';
 
 let tokenCache = null;
 const getToken = () => {
@@ -32,9 +32,11 @@ const getToken = () => {
   return tokenCache;
 };
 
-const makeCall = (number) => {
+const makeCall = (target) => {
   const params = {
-    To: number
+    Member: target.dataset.member,
+    Chamber: target.dataset.chamber,
+    To: target.dataset.number
   };
 
   return Twilio.Device.connect(params);
@@ -47,16 +49,15 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('root').addEventListener('click', (event) => {
     let targetElement = event.target;
     if (targetElement.id === 'call-representative') {
-      const number = event.target.dataset.number;
       loggingInfo = document.getElementById('calling-log');
 
       if (conn) {
         Twilio.Device.disconnectAll();
         conn = null;
         changeButtonMessage(targetElement, 'call square', 'Call Member, free!');
-      } else if (number) {
+      } else if (targetElement.dataset.number) {
         getToken().then((setup) => {
-          conn = makeCall(number);
+          conn = makeCall(targetElement);
           changeButtonMessage(targetElement, 'call square', 'Calling Member');
           return conn;
         }).then(() => {

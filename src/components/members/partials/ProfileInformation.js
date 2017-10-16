@@ -26,7 +26,7 @@ const ProfileInformation = ({ member }) => {
         <Icon name='info circle'/> Information
       </Header>
       <Segment stacked>
-        <Button size='large' color='green' data-number={member.phone} className='remove-radius' floated='right'
+        <Button size='large' color='green' data-number={member.phone} data-member={member['full-name']} data-chamber={member['congress-type']} className='remove-radius' floated='right'
           id="call-representative">
           <Icon name='call square'/>Call Member, free!
         </Button>
