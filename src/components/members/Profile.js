@@ -1,10 +1,9 @@
 import React from 'react';
-import { Grid, Loader, Divider, Icon } from 'semantic-ui-react';
+import { Grid, Loader, Divider } from 'semantic-ui-react';
 import ProfiileImage from './partials/PorfileImage';
 import ProfileInformation from './partials/ProfileInformation';
 import ProfileSocialMedia from './partials/ProfileSocialMedia';
-import CommitteeList from '../committees/List';
-import RolesList from "./RolesList";
+import RolesList from './RolesList';
 
 class MemberProfile extends React.Component {
   render() {
