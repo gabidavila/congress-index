@@ -33,6 +33,9 @@ class MemberFilter extends React.Component {
 
     this.setState({ ...filter }, () => {
       this.props.addFilter(filter);
+      if (key === 'name' && [1, 2].includes(value.length)) {
+        return;
+      }
       this.props.onChangeHandle(this.state);
     });
   };
@@ -50,8 +53,7 @@ class MemberFilter extends React.Component {
         </Form.Field>
         <Form.Field>
           <label>State</label>
-          <StatesSelect selectedValue={this.state.selectedState} states={this.props.states}
-            onChangeHandler={this.handleChange}/>
+          <StatesSelect selectedValue={this.state.selectedState} states={this.props.states} onChangeHandler={this.handleChange}/>
         </Form.Field>
         <Form.Field>
           <label>Congress Member</label>
@@ -61,7 +63,6 @@ class MemberFilter extends React.Component {
       </Form>
     );
   }
-
 }
 
 function mapStateToProps(state) {
