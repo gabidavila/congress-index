@@ -3,17 +3,17 @@ import { Button, Header, Icon, Segment, Label, Loader } from 'semantic-ui-react'
 import moment from 'moment';
 
 const ProfileInformation = ({ member }) => {
-  const officeAddress = member['propublica-profile'].office ? <div>
-    <Header as='h4' color='black'>
-      <Icon name='envelope'/> Office Address
-    </Header>
-    <Segment>
-      {member['propublica-profile'].office}
-    </Segment>
-  </div> : null;
+  const officeAddress = member['propublica-profile'].office ?
+    <div>
+      <Header as='h4' color='black'>
+        <Icon name='envelope'/> Office Address
+      </Header>
+      <Segment>
+        {member['propublica-profile'].office}
+      </Segment>
+    </div> : null;
   return (
     <div>
-
       <Header as='h1' dividing>
         {member['full-name']}
         <Header.Subheader>
@@ -21,14 +21,11 @@ const ProfileInformation = ({ member }) => {
           <Label color='black'>{member.congress}</Label>
         </Header.Subheader>
       </Header>
-
       {officeAddress}
-
       <Header as='h4' color='black'>
         <Icon name='info circle'/> Information
       </Header>
-      <Segment>
-
+      <Segment stacked>
         <Button size='large' color='positive' data-number={member.phone} className='remove-radius' floated='right'
           id="call-representative">
           <Icon name='call square'/>Call Member, free!
