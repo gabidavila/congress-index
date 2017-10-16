@@ -16,7 +16,8 @@
     "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "^2.2.0",
     "semantic-ui-react": "^0.74.2",
-    "typeface-roboto": "^0.0.35"
+    "typeface-roboto": "^0.0.35",
+    "uuid": "^3.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
