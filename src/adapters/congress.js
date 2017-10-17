@@ -1,6 +1,6 @@
 import queryString from 'query-string';
 
-const BASE_API_URL = process.env.REACT_APP_BASE_API_URL;
+const BASE_API_URL = process.env.REACT_APP_BASE_API_URL + '/congress';
 
 const buildFilter = (filterObj) => {
 

@@ -7,7 +7,7 @@ class Zipcode extends React.Component {
   };
 
   handleSubmit = () => {
-    console.log(this.state.zipcode);
+    this.props.search(this.state.zipcode);
   };
 
   handleChange = (event) => {

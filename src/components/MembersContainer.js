@@ -16,7 +16,6 @@ class MembersContainer extends React.Component {
   };
 
   handleChange = (filter) => {
-    console.log(filter);
     this.props.fetchMembers(filter);
   };
 
@@ -28,6 +27,10 @@ class MembersContainer extends React.Component {
     this.props.fetchMembers(initialState());
   };
 
+  handleSearch = (zipcode) => {
+    this.props.fetchMembersByZipcode(zipcode);
+  };
+
   render() {
     return (
       <Grid stackable columns={2}>
@@ -36,7 +39,7 @@ class MembersContainer extends React.Component {
             <Header as='h3'>
               <Icon name='search'/> Look in my area
             </Header>
-            <Zipcode/>
+            <Zipcode search={this.handleSearch}/>
           </Segment>
           <Divider/>
           <Segment>
