@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Icon } from 'semantic-ui-react';
-import { parties } from '../../helpers/congress';
+import { parties, chambers } from '../../helpers/congress';
 
 class MemberCard extends React.Component {
   render() {
@@ -19,10 +19,12 @@ class MemberCard extends React.Component {
           <Card.Meta><Icon name='calendar'/> Next election in {profile['next-election']}</Card.Meta>
           <Card.Description className="congress_type">
             <p>
+              <Icon name={chambers[profile['congress-type']].icon} />
               {profile['congress-type']}&nbsp;
               ({profile.congress})
             </p>
             <p>
+              <Icon name='marker' />
               <em>{profile.state.state} - {profile.state['state-full']}</em>
             </p>
           </Card.Description>

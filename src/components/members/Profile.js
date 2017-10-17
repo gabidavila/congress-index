@@ -14,7 +14,7 @@ class MemberProfile extends React.Component {
     const member = this.props.profile;
 
     return (
-      <Grid stackable columns={2}>
+      <Grid stackable columns={3}>
         <Grid.Column width={3}>
           <ProfiileImage member={member} />
         </Grid.Column>
