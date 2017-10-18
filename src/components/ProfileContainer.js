@@ -20,7 +20,7 @@ class ProfileContainer extends React.Component {
 
   render() {
     return (
-      <Grid stackable columns={2}>
+      <Grid stackable columns={1}>
         <Grid.Column width={16}>
           <MemberProfile profile={this.state.profile}/>
         </Grid.Column>
