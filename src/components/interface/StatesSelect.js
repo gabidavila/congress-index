@@ -9,13 +9,13 @@ const StatesSelect = (props) => {
   const statesList = [{
     key: 'A',
     value: 'A',
-    text: 'All States',
+    text: 'All States or Territories',
   }, ...props.states.map((state) => {
     return { key: state.attributes.state, value: state.attributes.state, text: state.attributes['state-full'] };
   })];
 
   return (
-    <Dropdown placeholder='Select State' value={props.selectedValue} fluid search selection onChange={handleChange} options={statesList}/>
+    <Dropdown placeholder='Select State or Territory' value={props.selectedValue} fluid search selection onChange={handleChange} options={statesList}/>
   );
 };
 

@@ -52,7 +52,7 @@ class MemberFilter extends React.Component {
           <PartySelect selectedValue={this.state.party} onChangeHandle={this.handleChange}/>
         </Form.Field>
         <Form.Field>
-          <label>State</label>
+          <label>State or Territory</label>
           <StatesSelect selectedValue={this.state.selectedState} states={this.props.states} onChangeHandler={this.handleChange}/>
         </Form.Field>
         <Form.Field>
