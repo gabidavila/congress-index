@@ -1,6 +1,6 @@
 import React from 'react';
 import USAMap from 'react-usa-map';
-import { Grid, Header, Icon, Segment, Label, List } from 'semantic-ui-react';
+import { Grid, Header, Icon, Label, List } from 'semantic-ui-react';
 import { getPartiesRepresentation, transformFilling } from '../adapters/representations';
 
 class MapContainer extends React.Component {

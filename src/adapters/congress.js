@@ -39,4 +39,9 @@ const getMemberById = (memberId) => {
     .then(response => response.json());
 };
 
-export { getAllMembers, getSenateMembers, getHouseMembers, getMemberById };
+const getPaginatedMembers = (url) => {
+  return fetch(url)
+    .then(response => response.json());
+};
+
+export { getAllMembers, getSenateMembers, getHouseMembers, getMemberById, getPaginatedMembers };

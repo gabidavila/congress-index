@@ -6,6 +6,8 @@ const membersReducer = (state = {
     return Object.assign({}, state, { isLoading: true });
   case 'LOADED_MEMBERS':
     return Object.assign({}, state, { membersList: action.payload.members, isLoading: false });
+  case 'SET_PAGINATION_LINKS':
+    return Object.assign({}, state, {pagination: action.payload});
   default:
     return state;
   }

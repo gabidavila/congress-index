@@ -15,12 +15,43 @@ class MembersContainer extends React.Component {
     previousButton: false
   };
 
+  componentWillReceiveProps(nextProps) {
+    if (Object.keys(nextProps.pagination).length === 0) {
+      this.setState({
+        nextButton: false,
+        previousButton: false
+      });
+    }
+    if (nextProps.pagination.next) {
+      this.setState({
+        nextButton: true
+      });
+    } else {
+      this.setState({
+        nextButton: false
+      });
+    }
+    if (nextProps.pagination.prev) {
+      this.setState({
+        previousButton: true
+      });
+    } else {
+      this.setState({
+        previousButton: false
+      });
+    }
+  }
+
   handleChange = (filter) => {
     this.props.fetchMembers(filter);
   };
 
   handleNextButton = () => {
+    this.props.paginateMembers(this.props.pagination.next);
+  };
 
+  handlePreviousButton = () => {
+    this.props.paginateMembers(this.props.pagination.prev);
   };
 
   componentDidMount() {
@@ -54,9 +85,12 @@ class MembersContainer extends React.Component {
             this.props.loading ? <Loader active inline='centered'/> : (
               <div>
                 <Segment vertical textAlign='center'>
-                  <Button disabled={!this.state.previousButton} color={this.state.previousButton ? 'blue' : 'grey' } content='Previous' icon='left arrow' labelPosition='left' />
+                  <Button disabled={!this.state.previousButton} onClick={this.handlePreviousButton} color={this.state.previousButton ? 'blue' : 'grey'}
+                    content='Previous' icon='left arrow' labelPosition='left'/>
                   <Header as='span' style={{ margin: '10px' }}>Members&nbsp;</Header>
-                  <Button disabled={!this.state.nextButton} onClick={this.handleNextButton} color={this.state.nextButton ? 'blue' : 'grey' } content='Next' icon='right arrow' labelPosition='right' />
+                  <Button disabled={!this.state.nextButton} onClick={this.handleNextButton}
+                    color={this.state.nextButton ? 'blue' : 'grey'} content='Next' icon='right arrow'
+                    labelPosition='right'/>
                 </Segment>
                 <Segment vertical>
                   <MembersList members={this.props.members}/>
@@ -72,6 +106,7 @@ class MembersContainer extends React.Component {
 function mapStateToProps(state) {
   return {
     members: state.members.membersList,
+    pagination: state.members.pagination,
     loading: state.members.isLoading
   };
 }
