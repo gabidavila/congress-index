@@ -60,3 +60,11 @@ label {
     text-transform: capitalize;
     font-size: 15px;
 }
+
+.usa-map path {
+    pointer-events: all;
+}
+.usa-map path:hover {
+    opacity: 0.75;
+    cursor: pointer;
+}

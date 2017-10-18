@@ -6,7 +6,6 @@ const getPartiesRepresentation = () => {
 };
 
 const colors = (alpha = 1) => {
-  console.log(alpha);
   return {
     'DEM': `rgba(25,125,215,${alpha})`,
     'REP': `rgba(252,67,73,${alpha})`
@@ -18,8 +17,16 @@ const transformFilling = (representationData, congress = 'house') => {
 
   representationData.forEach((data) => {
     const state = data.name;
-    const ratio = data.party_count.length === 2 ? 1 - parseInt(Object.values(data.party_count[0])[0]) / parseInt(Object.values(data.party_count[1])[0]) : 1;
-    const color = colors(ratio)[data.main_party];
+
+    const equal = data.party_count.length === 2 ? Object.values(data.party_count[0])[0] === Object.values(data.party_count[1])[0] : null;
+    console.log(state, equal, data.party_count)
+
+    let color = colors()[data.main_party];
+
+    if (equal) {
+      color = '#6F4C91';
+    }
+
     newFilling[state] = {
       fill: color
     };
