@@ -7,7 +7,7 @@ const TopMenuBar = () => {
       <Container>
         <Menu.Item as='a' href='/' header>
           <Image centered
-            src='/images/logo.png' alt='Congress Browser'
+            src='/images/logo.png' alt='Congress, who is?'
           />
         </Menu.Item>
         <Menu.Item as='a' href='/'>Home</Menu.Item>
