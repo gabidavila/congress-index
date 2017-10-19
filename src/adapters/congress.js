@@ -44,4 +44,24 @@ const getPaginatedMembers = (url) => {
     .then(response => response.json());
 };
 
-export { getAllMembers, getSenateMembers, getHouseMembers, getMemberById, getPaginatedMembers };
+const compareMembers = (members, chamber, congress = 115) => {
+  const options = {
+    member_id1: members[0]['attributes']['pp-member-id'],
+    member_id2: members[1]['attributes']['pp-member-id'],
+    chamber,
+    congress
+  };
+
+  const message = {
+    method: 'POST',
+    body: JSON.stringify({comparison: options}),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+
+  return fetch(BASE_API_URL + '/compare', message)
+    .then((response) => response.json());
+};
+
+export { getAllMembers, getSenateMembers, getHouseMembers, getMemberById, getPaginatedMembers, compareMembers };

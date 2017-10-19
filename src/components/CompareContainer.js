@@ -5,7 +5,7 @@ class CompareContainer extends React.Component {
   render() {
     return (
       <div>
-        <CompareSearch chamber='house'/>
+        <CompareSearch chamber='senate'/>
       </div>
     );
   }
