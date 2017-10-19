@@ -6,7 +6,7 @@ const buildFilter = (filterObj) => {
 
   const party = filterObj.party || 'A';
   const congress = filterObj.congress;
-  const page = filterObj.page;
+  const page = filterObj.page || 1;
 
   let options = { party, name: filterObj.name, congress, page };
 

@@ -12,6 +12,7 @@ const TopMenuBar = () => {
         </Menu.Item>
         <Menu.Item as='a' href='/'>Home</Menu.Item>
         <Menu.Item as='a' href='/map'>Map</Menu.Item>
+        <Menu.Item as='a' href='/compare'>Compare</Menu.Item>
       </Container>
     </Menu>
   );

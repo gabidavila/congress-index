@@ -17,10 +17,7 @@ const transformFilling = (representationData, congress = 'house') => {
 
   representationData.forEach((data) => {
     const state = data.name;
-
     const equal = data.party_count.length === 2 ? Object.values(data.party_count[0])[0] === Object.values(data.party_count[1])[0] : null;
-    console.log(state, equal, data.party_count)
-
     let color = colors()[data.main_party];
 
     if (equal) {

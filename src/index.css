@@ -68,3 +68,7 @@ label {
     opacity: 0.75;
     cursor: pointer;
 }
+
+#searchbar, #searchbar .input {
+    width: 100%;
+}
