@@ -1,11 +1,12 @@
 import _ from 'lodash';
 import React from 'react';
-import { Segment, Header, Icon, Label, Table, Divider } from 'semantic-ui-react';
+import { Segment, Header, Icon, Label, Table, Divider, Statistic } from 'semantic-ui-react';
 import { parties, chambers } from '../../helpers/congress';
 
 const CompareResults = (props) => {
   const firstMember = props.members.first_member.attributes;
   const secondMember = props.members.second_member.attributes;
+
   return (
     <Segment>
       <Header as='h2' icon textAlign='center'>
@@ -26,7 +27,6 @@ const CompareResults = (props) => {
             <Table.HeaderCell textAlign='center'>{secondMember['full-name']}</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
-
         <Table.Body>
           <Table.Row>
             <Table.Cell collapsing textAlign='right'>Party</Table.Cell>
@@ -50,6 +50,35 @@ const CompareResults = (props) => {
           </Table.Row>
         </Table.Body>
       </Table>
+      <Divider/>
+      <Header dividing>
+        <Icon name='bar chart'/>
+        <Header.Content>
+          More information
+        </Header.Content>
+      </Header>
+      <Statistic.Group widths='three'>
+        <Statistic>
+          <Statistic.Value>{props.data.bills.common_bills}</Statistic.Value>
+          <Statistic.Label>Common Bills</Statistic.Label>
+        </Statistic>
+        <Statistic>
+          <Statistic.Value>{props.data.votes.common_votes}</Statistic.Value>
+          <Statistic.Label>Common Votes</Statistic.Label>
+        </Statistic>
+        <Statistic color='blue'>
+          <Statistic.Value>{props.data.votes.common_votes - props.data.votes.disagree_votes}</Statistic.Value>
+          <Statistic.Label>Same Votes</Statistic.Label>
+        </Statistic>
+        <Statistic color='green'>
+          <Statistic.Value>{props.data.votes.agree_percent}%</Statistic.Value>
+          <Statistic.Label>Agreement %</Statistic.Label>
+        </Statistic>
+        <Statistic color='red'>
+          <Statistic.Value>{props.data.votes.disagree_percent}%</Statistic.Value>
+          <Statistic.Label>Disagreement %</Statistic.Label>
+        </Statistic>
+      </Statistic.Group>
     </Segment>
   );
 };

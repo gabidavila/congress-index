@@ -114,7 +114,7 @@ class CompareSearch extends React.Component {
         </Grid.Column>
         <Grid.Column width={6}>
           {this.state.members.length ?
-            <Segment>
+            <Segment compact>
               <MemberList members={this.state.members} columns={2}/>
               <br/>
               <Button onClick={this.resetSearch} fluid color='black'>Reset</Button>
