@@ -69,6 +69,6 @@ label {
     cursor: pointer;
 }
 
-#searchbar, #searchbar .input {
+.searchbar, .searchbar .input {
     width: 100%;
 }
