@@ -32,8 +32,11 @@ class CompareSearch extends React.Component {
       <div key='content' className='content'>
         {state &&
         <Label circular style={{ float: 'left', marginRight: '5px' }} color={parties[party].color}>{party}</Label>}
-        {title && <div className='title'>{title}</div>}
-        {description && <div className='description'>{description}</div>}
+        <div style={{ float: 'left' }}>
+          <div className='title'>{title}</div>
+          <div style={{ clear: 'both' }}></div>
+          <div className='description'>{description}</div>
+        </div>
       </div>,
     ]);
   };
