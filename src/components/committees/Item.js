@@ -23,9 +23,12 @@ const CommitteeItem = (props) => {
         <p>
           <strong>Rank in Party: </strong> {committee['rank-in-party']}
         </p>
-        <p>
-          <strong>Begin Date: </strong> {moment(committee['begin-date']).format('MM/DD/YYYY')}
-        </p>
+        { committee['begin-date'] ?
+          <p>
+            <strong>Begin Date: </strong> {moment(committee['begin-date']).format('MM/DD/YYYY')}
+          </p>
+          : null
+        }
         <p>
           <strong>End Date: </strong> {moment(committee['end-date']).format('MM/DD/YYYY')}
         </p>

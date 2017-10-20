@@ -8,6 +8,10 @@ import CompareContainer from './components/CompareContainer';
 import About from './components/About';
 
 class App extends Component {
+  componentWillMount() {
+    this.props.onRender();
+  }
+  
   render() {
     return (
       <Router>

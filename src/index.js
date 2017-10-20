@@ -11,9 +11,17 @@ import statesReducer from './reducers/statesReducer';
 import filtersReducer from './reducers/filtersReducer';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
+import ReactGA from 'react-ga';
+
+ReactGA.initialize('UA-108411781-1');
+
+function logPageView() {
+  ReactGA.set({ page: window.location.pathname + window.location.search });
+  ReactGA.pageview(window.location.pathname + window.location.search);
+}
 
 const rootReducer = combineReducers({ members: membersReducer, states: statesReducer, filters: filtersReducer });
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
-ReactDOM.render(<Provider store={store}><App/></Provider>, document.getElementById('root'));
+ReactDOM.render(<Provider store={store}><App onRender={logPageView}/></Provider>, document.getElementById('root'));
 registerServiceWorker();
