@@ -42,7 +42,7 @@ label {
     background-color: white;
 }
 
-.remove-radius {
+.remove-radius, .remove-radius > * > * {
     border-radius: 0 !important;
 }
 

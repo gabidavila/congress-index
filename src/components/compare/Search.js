@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import React from 'react';
-import { Grid, Search, Label, Segment, Button } from 'semantic-ui-react';
+import { Grid, Search, Label, Segment, Button, Dropdown } from 'semantic-ui-react';
 import { getAllMembers, compareMembers } from '../../adapters/congress';
 import { parties } from '../../helpers/congress';
 import MemberList from '../members/List';
@@ -18,7 +18,9 @@ class CompareSearch extends React.Component {
       value: '',
       members: [],
       comparison: null,
-      isComparable: false
+      isComparable: false,
+      chamber: this.props.chamber,
+      isChamberEnabled: true
     });
   };
 
@@ -58,11 +60,12 @@ class CompareSearch extends React.Component {
   };
 
   handleResultSelect = (event, resultObject) => {
-    this.setState({ value: '', members: [...this.state.members, resultObject.result.member], results: [] });
+    this.setState({ value: '', members: [...this.state.members, resultObject.result.member], results: [], isChamberEnabled: false });
   };
 
   handleSearchChange = (event, searchObject) => {
     this.setState({ isComparable: false });
+
     if (searchObject.minCharacters > searchObject.value.length) {
       this.setState({ value: searchObject.value });
       return;
@@ -74,18 +77,22 @@ class CompareSearch extends React.Component {
     }
 
     this.setState({ isLoading: true, value: searchObject.value }, () => {
-      getAllMembers({ name: this.state.value, congress: this.props.chamber }).then((results) => {
+      getAllMembers({ name: this.state.value, congress: this.state.chamber }).then((results) => {
         this.buildResult(results.data);
         this.setState({ isLoading: false });
       });
     });
   };
 
+  handleChamberChange = (event, data) => {
+    this.setState({chamber: data.value});
+  };
+
   handleCompare = () => {
     if (this.state.members.length !== 2) {
       return;
     }
-    compareMembers(this.state.members, this.props.chamber)
+    compareMembers(this.state.members, this.state.chamber)
       .then((results) => {
         this.setState({ comparison: results });
       });
@@ -94,14 +101,20 @@ class CompareSearch extends React.Component {
   render() {
     return (
       <Grid stackable>
-        <Grid.Column width={16}>
-          {this.state.members.length < 2 ?
+        {this.state.members.length < 2 ?
+          [<Grid.Column width={3} key='congress-search'>
+            <Dropdown className='remove-radius' fluid style={{float: 'left'}} selection name='congress' disabled={!this.state.isChamberEnabled} value={this.state.chamber}
+              options={[{key: 'senate', text: 'Senate', value: 'senate'}, {key: 'house', text: 'House', value: 'house'}]}
+              onChange={this.handleChamberChange}
+            />
+          </Grid.Column>,
+          <Grid.Column width={13} key='member-search'>
             <div className='searchbar'>
               <Search fluid
                 placeholder='Search for member...'
                 name={this.props.chamber}
                 minCharacters={3}
-                className='first'
+                className='remove-radius'
                 loading={this.state.isLoading}
                 onResultSelect={this.handleResultSelect}
                 onSearchChange={this.handleSearchChange}
@@ -110,8 +123,8 @@ class CompareSearch extends React.Component {
                 resultRenderer={this.renderer}
               />
             </div>
-            : null}
-        </Grid.Column>
+          </Grid.Column>]
+          : null}
         <Grid.Column width={6}>
           {this.state.members.length ?
             <Segment compact>
