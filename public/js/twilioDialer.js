@@ -1,8 +1,8 @@
-const API_URL = 'https://api.congresswhois.com';
+const API_URL = 'http://localhost:3000';
 
 let tokenCache = null;
-const getToken = () => {
-  tokenCache = tokenCache || fetch(API_URL + '/twilio/token')
+const getToken = (number) => {
+  tokenCache = tokenCache || fetch(API_URL + '/twilio/token?number=' + number)
     .then((response) => response.json())
     .then((json) => {
       return new Promise((resolve, reject) => {
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         conn = null;
         changeButtonMessage(targetElement, 'call square', 'Call Member, free!');
       } else if (targetElement.dataset.number) {
-        getToken().then((setup) => {
+        getToken(targetElement.dataset.number).then((setup) => {
           conn = makeCall(targetElement);
           changeButtonMessage(targetElement, 'call square', 'Calling Member');
           return conn;

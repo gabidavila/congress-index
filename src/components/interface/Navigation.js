@@ -12,6 +12,6 @@ const ContainerNavigation = (props) => {
         labelPosition='right'/>
     </Segment>
   );
-}
+};
 
 export default ContainerNavigation;
