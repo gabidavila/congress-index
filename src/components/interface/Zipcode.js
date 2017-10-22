@@ -26,7 +26,7 @@ class Zipcode extends React.Component {
         <Form.Field>
           <input placeholder='Zipcode' onChange={this.handleChange} value={this.state.zipcode} name='zipcode'/>
         </Form.Field>
-        <Button color='teal' fluid>Lookup</Button>
+        <Button color='teal' className='customTealBackground' fluid>Lookup</Button>
       </Form>
     );
   }

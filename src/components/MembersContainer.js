@@ -7,6 +7,7 @@ import MembersFilter from './members/Filter';
 import { Grid, Segment, Loader, Button, Header, Divider, Icon } from 'semantic-ui-react';
 import MembersList from './members/List';
 import Zipcode from './interface/Zipcode';
+import ContainerNavigation from './interface/Navigation';
 
 class MembersContainer extends React.Component {
   state = {
@@ -84,17 +85,12 @@ class MembersContainer extends React.Component {
           {
             this.props.loading ? <Loader active inline='centered'/> : (
               <div>
-                <Segment vertical textAlign='center'>
-                  <Button disabled={!this.state.previousButton} onClick={this.handlePreviousButton} color={this.state.previousButton ? 'blue' : 'grey'}
-                    content='Previous' icon='left arrow' labelPosition='left'/>
-                  <Header as='span' style={{ margin: '10px' }}>Members&nbsp;</Header>
-                  <Button disabled={!this.state.nextButton} onClick={this.handleNextButton}
-                    color={this.state.nextButton ? 'blue' : 'grey'} content='Next' icon='right arrow'
-                    labelPosition='right'/>
-                </Segment>
+                <ContainerNavigation previousButton={this.state.previousButton} handlePreviousButton={this.handlePreviousButton} nextButton={this.state.nextButton} handleNextButton={this.handleNextButton} text='Members'/>
                 <Segment vertical>
                   <MembersList members={this.props.members}/>
                 </Segment>
+
+                <ContainerNavigation previousButton={this.state.previousButton} handlePreviousButton={this.handlePreviousButton} nextButton={this.state.nextButton} handleNextButton={this.handleNextButton} text='Members'/>
               </div>
             )}
         </Grid.Column>

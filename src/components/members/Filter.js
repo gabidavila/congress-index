@@ -59,7 +59,7 @@ class MemberFilter extends React.Component {
           <label>Congress Member</label>
           <NameSearch typedValue={this.state.name} onChangeHandle={this.handleChange}/>
         </Form.Field>
-        <Button color="teal" onClick={this.handleReset} fluid>Reset</Button>
+        <Button color="teal" className='customTealBackground' onClick={this.handleReset} fluid>Reset</Button>
       </Form>
     );
   }
