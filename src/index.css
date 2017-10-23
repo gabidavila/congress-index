@@ -75,3 +75,7 @@ label {
 .customTealBackground {
     background-color: #009688 !important;
 }
+.member-feed {
+    height: 500px;
+    overflow-y: auto;
+}

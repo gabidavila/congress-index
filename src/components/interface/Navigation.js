@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Icon, Segment, Header } from 'semantic-ui-react';
+import { Button, Segment, Header } from 'semantic-ui-react';
 
 const ContainerNavigation = (props) => {
   return (

@@ -4,7 +4,7 @@ import * as MemberActions from '../actions/membersActions';
 import { bindActionCreators } from 'redux';
 import { initialState } from '../helpers/filter';
 import MembersFilter from './members/Filter';
-import { Grid, Segment, Loader, Button, Header, Divider, Icon } from 'semantic-ui-react';
+import { Grid, Segment, Loader, Header, Divider, Icon } from 'semantic-ui-react';
 import MembersList from './members/List';
 import Zipcode from './interface/Zipcode';
 import ContainerNavigation from './interface/Navigation';

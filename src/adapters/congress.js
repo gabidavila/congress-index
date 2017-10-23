@@ -8,8 +8,8 @@ const buildFilter = (filterObj) => {
   const congress = filterObj.congress;
   const page = filterObj.page || 1;
 
-  let options = { party, name: filterObj.name, congress, page };
-
+  let options = { party, name: filterObj.name, congress, page, paginated: filterObj.paginated };
+  console.log(options)
   if (filterObj.selectedState !== 'A') {
     options.state = filterObj.selectedState;
   } else {
