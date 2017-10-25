@@ -9,7 +9,7 @@ const buildFilter = (filterObj) => {
   const page = filterObj.page || 1;
 
   let options = { party, name: filterObj.name, congress, page, paginated: filterObj.paginated };
-  console.log(options)
+
   if (filterObj.selectedState !== 'A') {
     options.state = filterObj.selectedState;
   } else {
@@ -44,10 +44,10 @@ const getPaginatedMembers = (url) => {
     .then(response => response.json());
 };
 
-const compareMembers = (members, chamber, congress = 115) => {
+const compareMembers = (membersIds, chamber, congress = 115) => {
   const options = {
-    member_id1: members[0]['attributes']['pp-member-id'],
-    member_id2: members[1]['attributes']['pp-member-id'],
+    member_id1: membersIds[0],
+    member_id2: membersIds[1],
     chamber,
     congress
   };

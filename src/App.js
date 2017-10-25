@@ -22,7 +22,7 @@ class App extends Component {
               return <ProfileContainer {...routeProps}/>;
             }}/>
             <Route exact path='/map' component={MapContainer} />
-            <Route exact path='/compare' component={CompareContainer} />
+            <Route path='/compare/:chamber?/:firstMember?/:secondMember?' render={(routerProps) => <CompareContainer {...routerProps}/>} />
             <Route exact path='/about' component={About}/>
           </MainContainer>
         </div>

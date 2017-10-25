@@ -92,9 +92,16 @@ class CompareSearch extends React.Component {
     if (this.state.members.length !== 2) {
       return;
     }
-    compareMembers(this.state.members, this.state.chamber)
+    this.compare();
+  };
+
+  compare = () => {
+    const membersIds = this.state.members.map((member) => member['attributes']['pp-member-id']);
+    compareMembers(membersIds, this.state.chamber)
       .then((results) => {
-        this.setState({ comparison: results });
+        this.setState({ comparison: results }, () => {
+          this.props.onCompare(membersIds, this.state.chamber);
+        });
       });
   };
 

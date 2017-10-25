@@ -3,6 +3,21 @@ import CompareSearch from './compare/Search';
 import { Grid, Header, Icon } from 'semantic-ui-react';
 
 class CompareContainer extends React.Component {
+  state = {
+    chamber: 'senate'
+  };
+
+  componentWillMount() {
+    if (['senate', 'house'].includes(this.props.match.params.chamber)) {
+      this.setState({chamber: this.props.match.params.chamber});
+    }
+  }
+
+  updateUrl = (members, chamber) => {
+    this.setState({chamber});
+    this.props.history.push(`/compare/${chamber}/${members.join('/')}`);
+  };
+
   render() {
     return (
       <Grid stackable>
@@ -16,7 +31,7 @@ class CompareContainer extends React.Component {
               </Header.Subheader>
             </Header.Content>
           </Header>
-          <CompareSearch chamber='senate'/>
+          <CompareSearch chamber={this.state.chamber} onCompare={this.updateUrl}/>
         </Grid.Column>
       </Grid>
     );
