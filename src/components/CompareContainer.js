@@ -1,15 +1,31 @@
+import _ from 'lodash';
 import React from 'react';
 import CompareSearch from './compare/Search';
 import { Grid, Header, Icon } from 'semantic-ui-react';
+import { getMemberById } from '../adapters/congress';
 
 class CompareContainer extends React.Component {
   state = {
-    chamber: 'senate'
+    chamber: 'senate',
+    members: []
   };
 
   componentWillMount() {
     if (['senate', 'house'].includes(this.props.match.params.chamber)) {
       this.setState({chamber: this.props.match.params.chamber});
+    }
+  }
+
+  componentDidMount() {
+    const membersIds = [this.props.match.params.firstMember, this.props.match.params.secondMember]
+    if (_.compact(membersIds).length === 2) {
+      _.compact(membersIds).map((memberId) => {
+        getMemberById(memberId).then((memberData) => {
+          if (memberData.data.attributes['congress-type'] === this.props.match.params.chamber) {
+            this.setState({members: [...this.state.members, memberData['data']]});
+          }
+        });
+      });
     }
   }
 
@@ -31,7 +47,7 @@ class CompareContainer extends React.Component {
               </Header.Subheader>
             </Header.Content>
           </Header>
-          <CompareSearch chamber={this.state.chamber} onCompare={this.updateUrl}/>
+          <CompareSearch chamber={this.state.chamber} members={this.state.members} onCompare={this.updateUrl}/>
         </Grid.Column>
       </Grid>
     );

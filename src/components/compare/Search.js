@@ -11,6 +11,12 @@ class CompareSearch extends React.Component {
     this.resetSearch();
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.members.length === 2) {
+      this.setState({members: nextProps.members}, () => this.compare());
+    }
+  }
+
   resetSearch = () => {
     this.setState({
       isLoading: false,
