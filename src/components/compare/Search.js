@@ -12,7 +12,7 @@ class CompareSearch extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.members.length === 2) {
+    if (nextProps.members.length === 2 && this.props.members !== nextProps.members) {
       this.setState({members: nextProps.members}, () => this.compare());
     }
   }
