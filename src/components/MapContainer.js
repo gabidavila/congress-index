@@ -19,7 +19,7 @@ class MapContainer extends React.Component {
   }
 
   handleMap = (event) => {
-    getAllMembers({selectedState: event.target.dataset.name, paginated: false})
+    getAllMembers({selectedState: event.target.dataset.name, congress: 'house', paginated: false})
       .then((members) => {
         this.setState(() => {
           let state = this.state.state;
