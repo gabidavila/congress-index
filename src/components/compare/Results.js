@@ -79,6 +79,8 @@ const CompareResults = (props) => {
           <Statistic.Label>Disagreement %</Statistic.Label>
         </Statistic>
       </Statistic.Group>
+      <Divider />
+      <div class="sharethis-inline-share-buttons"></div>
     </Segment>
   );
 };
