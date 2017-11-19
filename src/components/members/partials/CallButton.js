@@ -1,6 +1,5 @@
 import React from 'react';
 import {Form, Button, Label, Icon } from 'semantic-ui-react';
-import Recaptcha from 'react-recaptcha';
 
 const Twilio = window.Twilio;
 
