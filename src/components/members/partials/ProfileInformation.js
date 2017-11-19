@@ -1,6 +1,7 @@
 import React from 'react';
-import { Button, Header, Icon, Segment, Label, Loader } from 'semantic-ui-react';
+import { Header, Icon, Segment, Label } from 'semantic-ui-react';
 import moment from 'moment';
+import CallButton from './CallButton';
 
 const ProfileInformation = ({ member }) => {
   const officeAddress = member['propublica-profile'].office ?
@@ -26,12 +27,7 @@ const ProfileInformation = ({ member }) => {
         <Icon name='info circle'/> Information
       </Header>
       <Segment stacked>
-        <Button size='large' color='green' data-number={member.phone} data-member={member['full-name']} data-chamber={member['congress-type']} className='remove-radius' floated='right'
-          id="call-representative">
-          <Icon name='call square'/>Call Member, free!
-        </Button>
-        <Label id='calling-log' basic color='grey' style={{ float: 'right', fontSize: '18px' }}></Label>
-        <Loader active id="calling-loader"/>
+        <CallButton member={member} />
         {member['congress-type'] === 'house' ? <p><strong>District: </strong>{member['propublica-profile']['district']}</p> : null}
         <p><strong>Next Election: </strong>{member['next-election']}</p>
         <p><strong>Date of
