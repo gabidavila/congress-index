@@ -5,13 +5,14 @@ import ProfileContainer from './components/ProfileContainer';
 import MembersContainer from './components/MembersContainer';
 import MapContainer from './components/MapContainer';
 import CompareContainer from './components/CompareContainer';
+import BillsContainer from './components/BillsContainer';
 import About from './components/About';
 
 class App extends Component {
   componentWillMount() {
     this.props.onRender();
   }
-  
+
   render() {
     return (
       <Router>
@@ -22,6 +23,7 @@ class App extends Component {
               return <ProfileContainer {...routeProps}/>;
             }}/>
             <Route exact path='/map' component={MapContainer} />
+            <Route exact path='/bills' component={BillsContainer} />
             <Route path='/compare/:chamber?/:firstMember?/:secondMember?' render={(routerProps) => <CompareContainer {...routerProps}/>} />
             <Route exact path='/about' component={About}/>
           </MainContainer>
