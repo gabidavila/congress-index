@@ -9,6 +9,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import membersReducer from './reducers/membersReducer';
 import statesReducer from './reducers/statesReducer';
 import filtersReducer from './reducers/filtersReducer';
+import billsReducer from './reducers/billsReducer';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import ReactGA from 'react-ga';
@@ -20,7 +21,7 @@ function logPageView() {
   ReactGA.pageview(window.location.pathname + window.location.search);
 }
 
-const rootReducer = combineReducers({ members: membersReducer, states: statesReducer, filters: filtersReducer });
+const rootReducer = combineReducers({ members: membersReducer, states: statesReducer, filters: filtersReducer, bills: billsReducer });
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
 ReactDOM.render(<Provider store={store}><App onRender={logPageView}/></Provider>, document.getElementById('root'));
