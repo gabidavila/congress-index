@@ -1,5 +1,5 @@
 const membersReducer = (state = {
-  billsList: [], isLoading: false, offset: 0, numResults: 0
+  billsList: [], isLoading: true, offset: 0, numResults: 0
 }, action) => {
   switch (action.type) {
   case 'LOADING_BILLS':
