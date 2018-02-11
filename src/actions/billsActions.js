@@ -5,7 +5,6 @@ export const fetchRecentBills = (offset) => {
     dispatch({ type: 'LOADING_BILLS' });
     getRecentBills({ offset: offset })
       .then((billsResult) => {
-        console.log(billsResult.bills);
         dispatch({ type: 'LOADED_BILLS', payload: { bills: billsResult.bills } });
         dispatch({ type: 'SET_BILLS_OFFSET', payload: { offset: billsResult.offset } });
       });
