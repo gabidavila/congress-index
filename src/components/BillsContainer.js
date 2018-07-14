@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import * as BillsActions from '../actions/billsActions';
 import { bindActionCreators } from 'redux';
 import { Grid, Header, Icon } from 'semantic-ui-react';
+import BillsList from './bills/List';
 
 class BillsContainer extends React.Component {
   componentDidMount() {
@@ -18,10 +19,13 @@ class BillsContainer extends React.Component {
             <Header.Content>
               Bills
               <Header.Subheader>
-                 Most Recent Bills
+                20 Most Recent Bills
               </Header.Subheader>
             </Header.Content>
           </Header>
+        </Grid.Column>
+        <Grid.Column width={16}>
+          <BillsList list={this.props.bills} />
         </Grid.Column>
       </Grid>
     );
@@ -29,7 +33,6 @@ class BillsContainer extends React.Component {
 }
 
 function mapStateToProps(state) {
-  // console.log(state)
   return {
     bills: state.bills.billsList,
     offset: state.bills.offset,
