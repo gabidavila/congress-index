@@ -7,7 +7,7 @@ import BillsList from './bills/List';
 
 class BillsContainer extends React.Component {
   componentDidMount() {
-    this.props.fetchRecentBills();
+    this.props.fetchRecentBills(this.props.offset);
   }
 
   render() {
