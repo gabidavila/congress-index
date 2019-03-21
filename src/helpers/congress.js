@@ -17,3 +17,5 @@ export const chambers = {
     icon: 'university'
   }
 };
+
+export const congressNumbers = [115, 116];

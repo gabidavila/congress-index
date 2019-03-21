@@ -8,6 +8,7 @@ import { Form, Button } from 'semantic-ui-react';
 import StatesSelect from '../interface/StatesSelect';
 import PartySelect from '../interface/PartySelect';
 import CongressSelect from '../interface/CongressSelect';
+import CongressNumberSelect from '../interface/CongressNumberSelect';
 import NameSearch from './NameSearch';
 
 class MemberFilter extends React.Component {
@@ -46,6 +47,10 @@ class MemberFilter extends React.Component {
         <Form.Field>
           <label>Congress</label>
           <CongressSelect selectedValue={this.state.congress} onChangeHandle={this.handleChange}/>
+        </Form.Field>
+        <Form.Field>
+          <label>Congress Number</label>
+          <CongressNumberSelect selectedValue={this.state.congressNumber} onChangeHandle={this.handleChange}/>
         </Form.Field>
         <Form.Field>
           <label>Party</label>
