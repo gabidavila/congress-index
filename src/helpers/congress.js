@@ -1,7 +1,8 @@
 export const parties = {
   'D': { color: 'blue', name: 'Democrat' },
   'R': { color: 'red', name: 'Republican' },
-  'I': { color: 'green', name: 'Independent' }
+  'ID': { color: 'green', name: 'Independent' },
+  'I': { color: 'green', name: 'Independent' },
 };
 
 export const chambers = {
