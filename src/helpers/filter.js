@@ -5,6 +5,6 @@ export const initialState = () => {
     name: null,
     congress: '',
     page: 1,
-    congressNumber: parseInt(process.env.REACT_APP_CURRENT_CONGRESS_NUMBER)
+    congressNumber: parseInt(process.env.REACT_APP_CURRENT_CONGRESS_NUMBER, 10)
   };
 };
