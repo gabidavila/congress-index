@@ -10,7 +10,7 @@ class CallButton extends React.Component {
     logText: null,
     token: null,
     twilioSetup: null
-  }
+  };
 
   getToken = () => {
     if (this.state.token !== null) {

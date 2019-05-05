@@ -17,7 +17,7 @@ class CompareContainer extends React.Component {
   }
 
   componentDidMount() {
-    const membersIds = [this.props.match.params.firstMember, this.props.match.params.secondMember]
+    const membersIds = [this.props.match.params.firstMember, this.props.match.params.secondMember];
     if (_.compact(membersIds).length === 2) {
       _.compact(membersIds).forEach((memberId) => {
         getMemberById(memberId).then((memberData) => {
