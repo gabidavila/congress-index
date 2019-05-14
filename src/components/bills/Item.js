@@ -1,7 +1,6 @@
 import React from 'react';
 import {Segment, Header, Icon, Loader, Grid} from 'semantic-ui-react';
 import {getBill} from '../../adapters/bills';
-import moment from 'moment';
 
 class BillsItem extends React.Component {
   state = {
