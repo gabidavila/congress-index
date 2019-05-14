@@ -1,23 +1,62 @@
 import React from 'react';
-import { Segment, Header, Icon } from 'semantic-ui-react';
+import {Segment, Header, Icon, Loader, Grid} from 'semantic-ui-react';
+import {getBill} from '../../adapters/bills';
 import moment from 'moment';
 
-const BillsItem = (props) => {
-  return (
-    <Segment>
-      <Header dividing as='h3'>
-        <Header.Content>
-          {props.bill["short_title"]}
-          <Header.Subheader>
-            {props.bill["bill_id"]} | <a href={`/bills/${props.bill["bill_slug"]}`}>View <Icon name='external alternate' /></a>
-            <p>Status: {props.bill["active"] ? 'active' : 'inactive'} | Introduced in: {moment(props.bill["introduced_date"]).format('YYYY-MM-DD')}</p>
-          </Header.Subheader>
-        </Header.Content>
-      </Header>
-      <p><em>({moment(props.bill["last_major_action_date"]).format('YYYY-MM-DD')}) - {props.bill["latest_major_action"]}</em></p>
-      <p>Committee: {props.bill["committees"]}</p>
-    </Segment>
-  );
-};
+class BillsItem extends React.Component {
+  state = {
+    loading: true
+  };
+
+  componentDidMount() {
+    getBill(this.props.match.params.id, this.props.match.params.congress).then((b) => {
+      console.log(b);
+      this.setState({
+        bill: b.bill,
+        member: b.member,
+        metadata: b.metadata,
+        loading: false
+      });
+    });
+  }
+
+  render() {
+    return (
+      (
+        <Grid stackable columns={2}>
+          <Grid.Column width={12}>
+            {this.state.loading ? <Loader active inline='centered'/> : (
+              <Segment>
+                <Header dividing as='h3'>
+                  <Header.Content>
+                    {this.state.bill.title} <Icon name='book'/>
+                    <Header.Subheader>
+                      {this.state.bill.bill} | {this.state.bill.committees}
+                    </Header.Subheader>
+                  </Header.Content>
+                </Header>
+                <div>
+                  <p>
+                    <strong>Introduced Date: </strong>
+                    {this.state.bill.introduced_date}
+                  </p>
+                  {this.state.bill.summary !== '' ? (
+                    <p>
+                      {this.state.bill.summary}
+                    </p>
+                  ) : ''}
+                </div>
+              </Segment>)}
+          </Grid.Column>
+          <Grid.Column width={4}>
+            <Segment>
+            </Segment>
+          </Grid.Column>
+        </Grid>
+      )
+    );
+  }
+
+}
 
 export default BillsItem;
